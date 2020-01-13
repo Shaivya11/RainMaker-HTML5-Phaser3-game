@@ -1,6 +1,6 @@
 
 // Main game Scene 
-// Note please use the Live streamer or any other host which supprts the html5 and phaser games. I have used Live streamer to test this game...
+// Note please use the Live server or any other host which supprts the html5 and phaser games. I have used Live server to test this game...
 var Scene1 = new Phaser.Class({
 
     Extends: Phaser.Scene,
@@ -62,7 +62,7 @@ var Scene1 = new Phaser.Class({
     scoreText = this.add.text(20, 20, 'score: 0', { fontSize: '24px', fill: '#000' });
     
     // adding health status asset
-    status=this.add.image(450,50,'status').setOrigin(0,0);
+    statusbar=this.add.image(450,50,'status').setOrigin(0,0);
 
 //when player clicks on mouse button the rains position is set to players current position with physics set to true
     this.input.on('pointerdown', function (pointer) {
@@ -93,15 +93,15 @@ var Scene1 = new Phaser.Class({
         bubble.x=player.x;
         bubble.y=player.y;
 
-// displays the health status 
-        status.displayWidth = health;
-        status.displayHeight=20;
-        status.setTint(0xffc075);
+// displays the health status bar on the top right corner of the game
+        statusbar.displayWidth = health;
+        statusbar.displayHeight=20;
+        statusbar.setTint(0xffc075);
         scoreText.setText(score);
 
         // collision 
-    this.physics.add.overlap(boy, bird, birdCol, null, this);
-    this.physics.add.overlap(boy, bird2, birdCol, null, this);
+    this.physics.add.collider(boy, bird, birdCol, null, this);
+    this.physics.add.collider(boy, bird2, birdCol, null, this);
     this.physics.add.overlap(rains, bird2,Purify, null, this);
     this.physics.add.overlap(rains, bird,Purify, null, this);
     this.physics.add.overlap(player, protect,Protect, null, this);

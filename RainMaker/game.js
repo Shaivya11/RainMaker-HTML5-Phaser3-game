@@ -21,7 +21,7 @@ var score = 0;
 var scoreText;
 var healthdis ;
 var health=120;
-var status;
+var statusbar;
 var game = new Phaser.Game(config);
 var rains;
 var protect;
